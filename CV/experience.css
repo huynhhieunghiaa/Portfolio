@@ -1,0 +1,139 @@
+/* Container của Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+/* Đường kẻ dọc ở giữa (hoặc bên trái) */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* Các item trong timeline */
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 40px; /* Cách lề trái để chừa chỗ cho đường kẻ */
+    opacity: 0;
+    animation: slideInRight 0.8s forwards;
+}
+
+/* Hiệu ứng xuất hiện lần lượt */
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Chấm tròn trên dòng kẻ */
+.timeline-dot {
+    position: absolute;
+    left: -8px; /* Căn chỉnh sao cho nằm giữa đường kẻ */
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid #fff;
+    box-shadow: 0 0 15px var(--primary-color);
+    z-index: 2;
+}
+
+/* Phần hiển thị thời gian */
+.timeline-date {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Nội dung chi tiết (Card) */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    color: var(--highlight-color); /* Màu xanh ngọc */
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.timeline-content ul {
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.timeline-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #f1f5f9;
+}
+
+.timeline-content ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Badge (Loại hình công việc) */
+.badge {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 5px;
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--highlight-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    .timeline::before { left: 20px; }
+    .timeline-dot { left: 12px; }
+    .timeline-item { padding-left: 50px; }
+    .timeline-content h3 { font-size: 1.3rem; }
+}

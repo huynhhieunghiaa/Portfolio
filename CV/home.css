@@ -1,0 +1,216 @@
+/* --- HERO SECTION --- */
+.hero { padding: 100px 0; display: flex; align-items: center; min-height: 90vh; overflow: hidden; }
+.hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; position: relative; z-index: 1; }
+.hero-content { flex: 1; padding-right: 50px; }
+
+/* 1. GREETING */
+.greeting {
+    font-size: 1.1rem; font-weight: 700; color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 20px; border-radius: 30px;
+    display: inline-block; margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-transform: uppercase; letter-spacing: 1px;
+    animation: pulseGlow 2s infinite; 
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+/* --- HIỆU ỨNG GÕ PHÍM CHO DÒNG 'XIN CHÀO' --- */
+.greeting-text {
+    display: inline-block;
+    vertical-align: bottom;
+    overflow: hidden;
+    
+    white-space: nowrap;
+    width: 0;
+    max-width: fit-content;
+    
+    /* Animation: 
+       - typing: Chạy trong 2.5s, giữ nguyên kết quả (forwards) 
+       - blink: Nhấp nháy liên tục (infinite)
+    */
+    animation: 
+        typing 2.5s steps(22) forwards, 
+        blink-caret-blue 0.75s step-end infinite;
+}
+
+@keyframes blink-caret-blue {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color); }
+}
+
+/* --- 2. NAME: CHẠY SAU (DELAY) & DỪNG LẠI --- */
+.name { 
+    font-size: 4rem; 
+    line-height: 1.2; 
+    margin-bottom: 15px; 
+    font-weight: 800;
+    color: #ffffff;
+    
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 40px rgba(37, 99, 235, 0.5);
+
+    /* CẤU HÌNH KHUNG */
+    display: inline-block;
+    vertical-align: bottom;
+    overflow: hidden; 
+    
+    /* Ẩn con trỏ lúc đầu (transparent) */
+    border-right: 4px solid transparent; 
+    
+    white-space: nowrap; 
+    width: 0; 
+    max-width: fit-content;
+    transform: none !important; 
+    
+    /* Animation:
+       - typing: Chờ 2.5s -> Chạy trong 2s -> Dừng lại (forwards)
+       - blink: Chờ 2.5s -> Nhấp nháy liên tục
+    */
+    animation: 
+        typing 2s steps(16) 2.5s forwards, 
+        blink-caret 0.75s step-end 2.5s infinite;
+}
+
+/* QUY TRÌNH GÕ ĐƠN GIẢN (0 -> 100%) */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .name { 
+        font-size: 2.2rem; 
+        white-space: nowrap; 
+    }
+}
+
+/* 3. JOB TITLE */
+.job-title { 
+    font-size: 1.8rem; color: #e2e8f0; margin-bottom: 25px; font-weight: 600;
+    display: inline-block; position: relative;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 4. DESCRIPTION */
+.description { 
+    font-size: 1.15rem; margin-bottom: 40px; max-width: 550px; font-weight: 500;
+    color: #f1f5f9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.2); padding: 10px; border-radius: 10px;
+    backdrop-filter: blur(2px);
+}
+
+/* BUTTONS */
+.cta-group { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    color: var(--white);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.7);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.btn-outline { 
+    border: 2px solid #ffffff; color: #ffffff; 
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.btn-outline:hover { 
+    background: #ffffff; color: var(--primary-color); 
+    transform: translateY(-5px); box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Dropdown */
+.dropdown { position: relative; display: inline-block; }
+.dropdown-content {
+    display: none; position: absolute; 
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+    min-width: 240px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border-radius: 16px; z-index: 100; top: 125%; left: 0; overflow: hidden;
+}
+.dropdown-content a { 
+    color: var(--dark-color); padding: 15px 25px; display: block; 
+    font-size: 1rem; transition: 0.3s; font-weight: 500;
+}
+.dropdown-content a:hover { 
+    background: linear-gradient(90deg, #eff6ff, #ffffff); 
+    color: var(--primary-color); padding-left: 35px; 
+}
+.show { display: block; animation: fadeInDropdown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* HERO IMAGE */
+.hero-image { flex: 1; display: flex; justify-content: flex-end; position: relative; }
+.img-wrapper { position: relative; z-index: 2; }
+
+.img-wrapper::before {
+    content: ''; position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px;
+    border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
+    background: linear-gradient(to right, #60a5fa, #ffffff); 
+    opacity: 0.3; z-index: -1; filter: blur(20px);
+    animation: rotateGradient 8s linear infinite;
+}
+
+.img-wrapper img {
+    width: 380px; height: 380px; object-fit: cover;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), inset 0 0 0 5px rgba(255,255,255,0.2);
+    animation: float 6s ease-in-out infinite;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+
+@keyframes float { 
+    0% { transform: translateY(0px) rotate(0deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 
+    50% { transform: translateY(-25px) rotate(2deg); border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; } 
+    100% { transform: translateY(0px) rotate(0deg); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 
+}
+@keyframes rotateGradient { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* SOCIAL ICONS */
+.social-icons a { 
+    font-size: 1.5rem; margin-right: 20px; color: #ffffff; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 50px; height: 50px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+.social-icons a:hover { 
+    background: #ffffff; color: var(--primary-color); 
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .hero-container { flex-direction: column-reverse; text-align: center; }
+    .hero-content { padding-right: 0; margin-top: 50px; }
+    .hero-image { justify-content: center; width: 100%; }
+    .img-wrapper img { width: 300px; height: 300px; }
+    .cta-group { justify-content: center; flex-direction: column; align-items: center; width: 100%; }
+    .btn, .dropdown, .dropdown button { width: 100%; max-width: 320px; justify-content: center; }
+    .name { font-size: 2.8rem; }
+    .dropdown-content { position: relative; top: 10px; width: 100%; box-shadow: none; border: 1px dashed var(--primary-color); background: #fff; }
+}

@@ -1,0 +1,27 @@
+.skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;
+}
+
+.skill-card {
+    background: var(--glass-bg); /* Nền kính */
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    padding: 30px; border-radius: 16px; text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
+
+/* Hiệu ứng Hover cực đẹp: Nổi lên và phát sáng */
+.skill-card:hover { 
+    transform: translateY(-15px) scale(1.02); 
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2); 
+    border-color: var(--primary-color);
+}
+
+.skill-card i { 
+    font-size: 3.5rem; color: var(--primary-color); margin-bottom: 20px; 
+    filter: drop-shadow(0 5px 15px rgba(37, 99, 235, 0.3)); /* Bóng cho icon */
+    transition: 0.3s;
+}
+.skill-card:hover i { transform: scale(1.1) rotate(10deg); }
