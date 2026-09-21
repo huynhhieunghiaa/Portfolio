@@ -8,9 +8,13 @@
 
 /* CỘT TRÁI */
 .contact-info-box { 
-    flex: 1; min-width: 300px; 
+    /* Giới hạn chiều rộng tối đa để không bị thừa mảng trắng */
+    max-width: 550px; 
+    width: 100%;
+    margin: 0 auto; /* Căn giữa toàn bộ box */
+
     background: var(--glass-bg); backdrop-filter: blur(10px);
-    padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border);
+    padding: 35px; border-radius: 20px; border: 1px solid var(--glass-border);
 }
 
 .contact-info-box h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary-color); }
@@ -24,29 +28,6 @@
 }
 .info-item:hover .icon-box { background: var(--primary-color); color: var(--white); transform: rotate(360deg) scale(1.1); }
 
-/* CỘT PHẢI: FORM */
-.contact-form {
-    flex: 1.2; min-width: 300px; 
-    background: rgba(255, 255, 255, 0.85); /* Nền trắng đục hơn chút để nhập liệu dễ nhìn */
-    backdrop-filter: blur(15px);
-    padding: 40px; border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-    border: 1px solid var(--glass-border);
-}
-.contact-form h3 { margin-bottom: 20px; font-size: 1.5rem; }
-.input-group { margin-bottom: 20px; }
-.contact-form input, .contact-form textarea {
-    width: 100%; padding: 15px; border: 2px solid transparent; /* Viền ẩn */
-    border-radius: 10px; font-family: inherit; font-size: 1rem;
-    transition: var(--transition); outline: none; 
-    background: #f1f5f9; /* Nền input xám nhạt */
-}
-.contact-form input:focus, .contact-form textarea:focus {
-    border-color: var(--primary-color); background: var(--white);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-    transform: translateY(-2px);
-}
-.contact-form textarea { resize: vertical; }
 
 /* Social Icons */
 .social-links-contact { margin-top: 40px; display: flex; gap: 15px; }
